@@ -613,7 +613,7 @@ int MediaPlayer::readPackets() {
                         avctx->sample_rate);
         if (ret < 0) {
             av_log(NULL, AV_LOG_WARNING, "could not open audio device\n");
-            // 如果音频设备打开失败，则调整时钟的同步类型
+            // 如果音频设备打开失败，则调整钟的同步时类型
             if (playerState->syncType == AV_SYNC_AUDIO) {
                 if (videoDecoder != NULL) {
                     playerState->syncType = AV_SYNC_VIDEO;

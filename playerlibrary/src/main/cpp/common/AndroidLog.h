@@ -7,7 +7,7 @@
 
 #include <android/log.h>
 
-#define JNI_TAG "CainPlayer"
+#define JNI_TAG "CainPlayer_Native"
 
 #if defined(__ANDROID__)
 

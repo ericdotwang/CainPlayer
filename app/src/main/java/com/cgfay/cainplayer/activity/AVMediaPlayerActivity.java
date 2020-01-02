@@ -159,6 +159,8 @@ public class AVMediaPlayerActivity extends AppCompatActivity implements View.OnC
                     public void run() {
                         mTvCurrentPosition.setText(StringUtils.generateStandardTime(current));
                         mTvDuration.setText(StringUtils.generateStandardTime(duration));
+                        //更新进度
+                        mSeekBar.setProgress((int)current);
                     }
                 });
             }
