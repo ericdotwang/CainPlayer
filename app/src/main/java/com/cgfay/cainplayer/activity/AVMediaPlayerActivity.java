@@ -160,7 +160,9 @@ public class AVMediaPlayerActivity extends AppCompatActivity implements View.OnC
                         mTvCurrentPosition.setText(StringUtils.generateStandardTime(current));
                         mTvDuration.setText(StringUtils.generateStandardTime(duration));
                         //更新进度
-                        mSeekBar.setProgress((int)current);
+                        if (!isSeeking) {
+                            mSeekBar.setProgress((int) current);
+                        }
                     }
                 });
             }
@@ -253,6 +255,7 @@ public class AVMediaPlayerActivity extends AppCompatActivity implements View.OnC
     }
 
     private int mProgress;
+    private boolean isSeeking = false;
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         if (fromUser) {
@@ -263,10 +266,12 @@ public class AVMediaPlayerActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
+        isSeeking = true;
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+        isSeeking = false;
         if (mCainMediaPlayer != null) {
             mCainMediaPlayer.seekTo(mProgress);
         }
